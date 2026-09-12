@@ -155,3 +155,4 @@ docker system prune     # Очистит неиспользуемые ресур
 ```
 
 ## Developer
+Евгений Lanets, [Telegram](https://t.me/Lanets) 

@@ -10,6 +10,7 @@ RUN apk add --no-cache \
     g++ \
     make \
     && docker-php-ext-install pdo pdo_pgsql zip \
+    && pecl channel-update pecl.php.net \
     && pecl install redis \
     && docker-php-ext-enable redis \
     && apk del autoconf g++ make

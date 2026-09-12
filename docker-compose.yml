@@ -6,6 +6,7 @@ services:
       dockerfile: docker/php/Dockerfile
     volumes:
       - ./src:/var/www/html
+      - ./setup.sh:/var/www/html/setup.sh
     environment:
       - DB_CONNECTION=pgsql
       - DB_HOST=db

@@ -16,8 +16,10 @@ services:
       - DB_PASSWORD=postgres
       - REDIS_HOST=redis
     depends_on:
-      - db
-      - redis
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
 
   # Веб-сервер Nginx
   webserver:
@@ -39,6 +41,11 @@ services:
       - POSTGRES_PASSWORD=postgres
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres -d laravel" ]
+      interval: 5s
+      timeout: 3s
+      retries: 10
 
   # Redis
   redis:
@@ -51,4 +58,3 @@ services:
 volumes:
   postgres_data:
   redis_data:
-

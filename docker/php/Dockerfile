@@ -18,7 +18,7 @@ RUN apk add --no-cache \
 # Установка Composer
 COPY --from=composer:2 /usr/bin/composer /usr/local/bin/composer
 
+WORKDIR /var/www/html
+
 # Настройка прав доступа
 RUN chown -R www-data:www-data /var/www/html
-
-WORKDIR /var/www/html

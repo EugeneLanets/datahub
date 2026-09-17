@@ -16,7 +16,7 @@ RUN apk add --no-cache \
     && apk del autoconf g++ make
 
 # Установка Composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+COPY --from=composer:2 /usr/bin/composer /usr/local/bin/composer
 
 # Настройка прав доступа
 RUN chown -R www-data:www-data /var/www/html
